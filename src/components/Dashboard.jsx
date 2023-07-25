@@ -16,9 +16,29 @@ function Dashboard() {
         setMessage('');
         const pattern = /(([0-9]{2})(0|1)([0-9])([0-3])([0-9]))([ ]?)(([0-9]{4})([ ]?)([0-1][8]([ ]?)[0-9]))/;
         if(pattern.test(idNumber)){
-            setMessage('correct Format')
+
+            let sum = 0;
+            let shouldDouble = false;
+
+            for (let i = idNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(idNumber.charAt(i));
+                if (shouldDouble) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                sum += digit;
+                shouldDouble = !shouldDouble;
+            }
+
+            if(sum % 10 === 0){
+                setMessage('Valid ID Number')
+            }else{
+                setMessage('Invalid ID Number')
+            }
         }else{
-            setMessage('Enter correct format')
+            setMessage('Invalid ID Number')
         }
     }
 

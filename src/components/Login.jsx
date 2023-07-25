@@ -17,7 +17,7 @@ const Login=()=> {
             setError('')
             setLoading(true);// disable button
             await login(email,password);
-            navigate('/')
+            navigate('/verify')
         }catch{
             setError('Failed to Log in')
         }
