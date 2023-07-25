@@ -6,7 +6,7 @@ import { Link , useNavigate} from 'react-router-dom';
 const Login=()=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {login,currentUser}=useAuth();
+    const {login}=useAuth();
     const [error,setError]=useState('');
     const [loading,setLoading]=useState(false);
     const navigate=useNavigate(); //redirction
@@ -29,7 +29,6 @@ const Login=()=> {
         <Card>
             <Card.Body>
                 <h2 className='text-center mb-4'>Log In</h2>
-                {currentUser && currentUser.email}
                 {error && <Alert variant='danger'>{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">

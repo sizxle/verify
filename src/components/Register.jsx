@@ -7,7 +7,7 @@ const Register=()=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-    const {register,currentUser}=useAuth();
+    const {register}=useAuth();
     const [error,setError]=useState('');
     const [loading,setLoading]=useState(false);
     const navigate=useNavigate();
