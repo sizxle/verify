@@ -16,8 +16,8 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <Routes>
-              <Route exact path='/' Component={ProtectedRoute}>
-                <Route exact path='/' Component={Dashboard}/>
+              <Route exact path='/verify' Component={ProtectedRoute}>
+                <Route exact path='/verify' Component={Dashboard}/>
               </Route>
               <Route path='/register' Component={Register} />
               <Route path='/login' Component={Login} />
