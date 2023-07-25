@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Alert, Button, Card} from 'react-bootstrap'
+import {Alert, Button, Card,Form} from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext';
 import { Link,useNavigate } from 'react-router-dom';
 
@@ -7,10 +7,23 @@ import { Link,useNavigate } from 'react-router-dom';
 function Dashboard() {
     const [error,setError]=useState('');
     const {currentUser,logout}=useAuth();
+    const [idNumber,setIdNumber]=useState('');
+    const [message,setMessage]=useState('');
     const navigate=useNavigate();
+
+    function handleVerify(e){
+        e.preventDefault();
+        setMessage('');
+        const pattern = /(([0-9]{2})(0|1)([0-9])([0-3])([0-9]))([ ]?)(([0-9]{4})([ ]?)([0-1][8]([ ]?)[0-9]))/;
+        if(pattern.test(idNumber)){
+            setMessage('correct Format')
+        }else{
+            setMessage('Enter correct format')
+        }
+    }
+
     async function handleLogOut(){
         setError('');
-
         try{
             await logout();
             navigate('/login')
@@ -29,6 +42,16 @@ function Dashboard() {
             </Card.Body>
             <Card.Body>
                 <h4 className='text-center mb-4'>Validate RSA ID here</h4>
+                {message && <Alert variant='danger'>{message}</Alert>}
+                <Form>
+                    <Form.Label>RSA ID Number</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={idNumber}
+                        onChange={e=>setIdNumber(e.target.value)}
+                        ></Form.Control>
+                    <Button onClick={handleVerify} className='w-100 mt-4' type="submit" style={{ backgroundColor: 'green' }}>Verify</Button>
+                </Form>
             </Card.Body>
         </Card>
         <p className='mt-8 text-center relative'>
