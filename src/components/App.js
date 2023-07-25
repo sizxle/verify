@@ -6,6 +6,7 @@ import { BrowserRouter, Route,Routes} from 'react-router-dom';
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
+import ForgotPassword from "./ForgotPassword";
 
 function App() {
   return(
@@ -20,6 +21,7 @@ function App() {
               </Route>
               <Route path='/register' Component={Register} />
               <Route path='/login' Component={Login} />
+              <Route path='/forgotPassword' Component={ForgotPassword} />
             </Routes>
           </AuthProvider>
         </BrowserRouter>
