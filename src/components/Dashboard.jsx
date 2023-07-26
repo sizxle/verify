@@ -14,9 +14,10 @@ function Dashboard() {
     function handleVerify(e){
         e.preventDefault();
         setMessage('');
+        //regular expression for testing format
         const pattern = /(([0-9]{2})(0|1)([0-9])([0-3])([0-9]))([ ]?)(([0-9]{4})([ ]?)([0-1][8]([ ]?)[0-9]))/;
         if(pattern.test(idNumber)){
-
+            //Luhms Algorithm for ID validation
             let sum = 0;
             let shouldDouble = false;
 
@@ -53,7 +54,7 @@ function Dashboard() {
     }
   return (
      <>
-        <Card>
+        <Card style={{background:"black", color:"white"}}>
             <Card.Body style={{background:"green"}}>
                 <h2 className='text-center mb-2'>VERIFY</h2>
                 {error && <Alert variant='danger'>{error}</Alert>}
