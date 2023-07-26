@@ -22,7 +22,7 @@ const Register=()=> {
             setError('')
             setLoading(true);// disable button
             await register(email,password);
-            navigate('/')
+            navigate('/verify')
         }catch{
             setError('Failed to create user account')
         }
@@ -31,7 +31,7 @@ const Register=()=> {
     }
     return (
     <div>
-        <Card>
+        <Card style={{background:"black", color:"white"}}>
             <Card.Body>
                 <h2 className='text-center mb-4'>Register</h2>
                 {error && <Alert variant='danger'>{error}</Alert>}
@@ -42,6 +42,7 @@ const Register=()=> {
                         type="email"
                         value={email}
                         required
+                        placeholder='sthembizomolefi@gmail.com'
                         onChange={(e=>setEmail(e.target.value))}></Form.Control>
                     </Form.Group>
                     <Form.Group id="password">

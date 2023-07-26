@@ -26,7 +26,7 @@ const Login=()=> {
     }
     return (
     <div>
-        <Card>
+        <Card style={{background:"black", color:"white"}}>
             <Card.Body>
                 <h2 className='text-center mb-4'>Log In</h2>
                 {error && <Alert variant='danger'>{error}</Alert>}
